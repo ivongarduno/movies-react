@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import { Layout } from "antd";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import routes from "./routing/routes";
+import MenuTop from "./components/MenuTop";
 
 export default function App() {
   const { Header, Content } = Layout;
@@ -9,7 +10,9 @@ export default function App() {
     <Layout>
       <Suspense fallback="Cargando...">
         <Router>
-          <Header>Header ...</Header>
+          <Header>
+            <MenuTop />
+          </Header>
           <Content>
             <Switch>
               {routes.map((route) => (
