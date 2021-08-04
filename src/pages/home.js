@@ -1,6 +1,8 @@
 import React from "react";
+import { Row, Col } from "antd";
 import useFetch from "../hooks/useFetch";
 import SliderMovies from "../components/SliderMovies";
+import MovieList from "../components/MovieList";
 import { URL_API, API } from "../utils/constants";
 
 export default function Home() {
@@ -8,10 +10,25 @@ export default function Home() {
     `${URL_API}/movie/now_playing?api_key=${API}&language=en-US&page=1`
   );
 
+  const popularMovies = useFetch(
+    `${URL_API}/movie/popular?api_key=${API}&language=en-US&page=1`
+  );
+
+  const topMovies = useFetch(
+    `${URL_API}/movie/top_rated?api_key=${API}&language=en-US&page=1`
+  );
 
   return (
     <>
-      <SliderMovies movies={newMovies}/>
+      <SliderMovies movies={newMovies} />
+      <Row>
+        <Col span={12}>
+          <MovieList title="Películas populares" movies={popularMovies} />
+        </Col>
+        <Col span={12}>
+          <MovieList title="Películas Top" movies={topMovies} />
+        </Col>
+      </Row>
     </>
   );
 }
