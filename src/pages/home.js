@@ -4,6 +4,7 @@ import useFetch from "../hooks/useFetch";
 import SliderMovies from "../components/SliderMovies";
 import MovieList from "../components/MovieList";
 import { URL_API, API } from "../utils/constants";
+import Footer from '../components/Footer';
 
 export default function Home() {
   const newMovies = useFetch(
@@ -29,6 +30,7 @@ export default function Home() {
           <MovieList title="Películas Top" movies={topMovies} />
         </Col>
       </Row>
+      <Footer />
     </>
   );
 }
